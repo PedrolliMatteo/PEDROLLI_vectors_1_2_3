@@ -1,33 +1,48 @@
 #include <array>
 #include <iostream>
+#include <vector>
 #include <algorithm>
 
 // ES 1
-int primoEs()
+void primoEs()
 {
-    std::array<int, 10> array = {15, -3, 22, -8, 7, 0, 14, -1, 9, 30};
+    std::cout << "ESERCIZIO 1" << std::endl << std::endl;
+    std::vector vettore = {15, -3, 22, -8, 7, 0, 14, -1, 9, 30};
 
-    auto boh = std::find_if(array.begin(), array.end(), [](int i)
+    //1° n° negativo
+    auto boh = std::find_if(vettore.begin(), vettore.end(), [](int i)
     {
         if (i < 0)
         {
-            return i;
+            return true;
         }
-        else {
-
-        }
+        return false;
     });
-    return *boh;
+    std::cout << "Il primo n° negativo è:\t" << boh[0] << std::endl;
+
+    //rimozione negativi da array
+    auto remove = std::remove_if(vettore.begin(), vettore.end(), [](int i)
+    {
+        if (i < 0)
+        {
+            return true;
+        }
+    return false;
+    });
+    vettore.erase(remove, vettore.end());
+    std::cout << "Vettore senza numeri negativi:\t";
+    for (int i = 0; i < vettore.size(); i++)
+    {
+        std::cout << vettore[i] << " ";
+    }
+    std::cout << std::endl;
 }
 
 
 int main()
 {
+    primoEs(); //fatto
 
-    int n = primoEs();
 
-    std::cout << "Il primo n° negativo è " << n << std::endl;
-
-    std::cout << "ciao";
     return 0;
 }
