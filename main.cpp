@@ -14,7 +14,7 @@ int primoEs()
             return i;
         }
         else {
-            
+
         }
     });
     return *boh;
